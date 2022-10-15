@@ -1,16 +1,20 @@
 import React from 'react';
-import theMovieDbApi from 'components/fetchMovies';
-// import { useState } from 'react';
+import { fetchMovies } from 'components/fetchMovies';
+import { useState, useEffect } from 'react';
+import HomePagesItems from 'components/HomePagesItems';
 
 export default function HomePage() {
-    // const [movies, setMovies] = useState([])
+    const [movies, setMovies] = useState([])
 
     async function fetchImagesResult() {
         // setLoading(true);
             try {
-                const responseData = await theMovieDbApi.fetchMovies();
+                const responseData = await fetchMovies();
+                // const data = await responseData.json();
                 // handleResult(responseData);
                 console.log(responseData);
+                setMovies(responseData.results);
+                // return data;
             }
             catch (error) {
                 // setError(error);
@@ -18,16 +22,25 @@ export default function HomePage() {
             finally {
             //    setLoading(false)
             }
-    };
+        };
     
-    fetchImagesResult();
+    useEffect(() => {
+        console.log('мщнтування');
+    // setMovies(fetchImagesResult());
+        
+        // const pop =
+            fetchImagesResult();
+        // console.log(pop);
+        // setMovies(pop);
+}, [])
 
-    // async function movies() {
-    //     try {
-    //     const response = await theMovieDbApi.fetchMovies();
-    // }
+
+    // fetchImagesResult();
 
   return (
-    <div>HomePage</div>
+          <ul>
+              <HomePagesItems films={movies} />
+
+          </ul>
   )
 }
