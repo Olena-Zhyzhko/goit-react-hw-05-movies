@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchMovies } from 'components/FetchMovies';
+import { fetchMovies } from 'components/fetchMovies';
 import { useState, useEffect } from 'react';
 import HomePagesItems from 'components/HomePagesItems';
 

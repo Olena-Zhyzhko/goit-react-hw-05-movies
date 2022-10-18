@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchMovieCredits } from 'components/FetchMovies'
+import { fetchMovieCredits } from 'components/fetchMovies'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 

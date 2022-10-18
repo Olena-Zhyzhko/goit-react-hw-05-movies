@@ -1,5 +1,5 @@
 import React from 'react'
-import { fetchMovieName } from 'components/FetchMovies';
+import { fetchMovieName } from 'components/fetchMovies';
 import { useState, useEffect } from 'react';
 import SearchMovieItems from 'components/SearchMovieItems';
 
