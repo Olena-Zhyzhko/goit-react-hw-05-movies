@@ -47,7 +47,7 @@ export default function MovieIdDetails() {
 
   return (
       <div>
-          {/* <Link to={location.state.from}>Go back</Link>; */}
+          <Link to={location.state?.from}>Go back</Link>;
           <SingleMovie movie={movie} />
           <AdditionalInfo id={movieId} />
       </div>
