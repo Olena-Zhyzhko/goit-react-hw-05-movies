@@ -7,7 +7,7 @@ export const SharedLayout = () => {
       {/* <div>HomePage</div>
       <div>Movie</div> */}
       <AppBar />
-      <div>content</div>
+      {/* <div>content</div> */}
 
     </div>
   );

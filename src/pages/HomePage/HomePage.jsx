@@ -1,20 +1,22 @@
 import React from 'react';
-import { fetchMovies } from 'components/fetchMovies';
+import { fetchMovies } from 'components/FetchMovies';
 import { useState, useEffect } from 'react';
 import HomePagesItems from 'components/HomePagesItems';
 
 export default function HomePage() {
-    const [movies, setMovies] = useState([])
+    const [movies, setMovies] = useState(() => {
+        return JSON.parse(window.localStorage.getItem('popularMovie')) ?? []
+    })
 
-    async function fetchImagesResult() {
+    async function fetchMoviesResult() {
         // setLoading(true);
             try {
                 const responseData = await fetchMovies();
-                // const data = await responseData.json();
                 // handleResult(responseData);
-                console.log(responseData);
+                // console.log(responseData);
                 setMovies(responseData.results);
-                // return data;
+                        // localStorage.setItem('popularMovie', JSON.stringify(movies));
+
             }
             catch (error) {
                 // setError(error);
@@ -25,22 +27,23 @@ export default function HomePage() {
         };
     
     useEffect(() => {
-        console.log('мщнтування');
-    // setMovies(fetchImagesResult());
-        
-        // const pop =
-            fetchImagesResult();
-        // console.log(pop);
-        // setMovies(pop);
-}, [])
+        if (movies === []) {
+            return;
+        }
 
+        fetchMoviesResult();
 
-    // fetchImagesResult();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+        useEffect(() => {
+        localStorage.setItem('popularMovie', JSON.stringify(movies));
+    }, [movies])
+
 
   return (
           <ul>
               <HomePagesItems films={movies} />
-
           </ul>
   )
 }

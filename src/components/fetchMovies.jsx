@@ -17,7 +17,28 @@ import axios from 'axios';
     return responce.data;
 }
 
-export { fetchMovies };
+const fetchMovieName = async (searchName) => {
+    const fetchResult = await axios.get(`${BASE_URL}search/movie?api_key=${KEY}&language=en-US&include_adult=false&query=${searchName}`);
+    return fetchResult;
+}
+
+const fetchOneMovie = async (id) => {
+    const oneMovieRequest = await axios.get(`${BASE_URL}movie/${id}?api_key=${KEY}&language=en-US`);
+    return oneMovieRequest;
+    }
+
+const fetchMovieCredits = async (id) => {
+    const oneMovieCredits = await axios.get(`${BASE_URL}movie/${id}/credits?api_key=${KEY}&language=en-US`);
+    return oneMovieCredits;
+    }
+
+const fetchMovieReviews = async (id) => {
+    const oneMovieCredits = await axios.get(`${BASE_URL}movie/${id}/reviews?api_key=${KEY}&language=en-US`);
+    return oneMovieCredits;
+}
+    // https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
+
+export { fetchMovies, fetchMovieName, fetchOneMovie, fetchMovieCredits, fetchMovieReviews };
 // async fetchMovies(){
       
 //     const fetchRequest = await fetch(`${this.BASE_URL}${this.MAIN_PAGE_URL}?api_key=${this.KEY}&page=${this.page}`);
@@ -32,17 +53,9 @@ export { fetchMovies };
 //     return list.genres;
 // }
 
-// async fetchOneMovie(id) {
-//     const oneMovieRequest = await fetch(`${this.BASE_URL}movie/${id}?api_key=${this.KEY}&language=en-US`);
-//     const dataOneMovie = await oneMovieRequest.json();
-//     return dataOneMovie;
-//     }
+// 
 
-// async fetchMovieName(searchName) {
-//     const fetchResult = await fetch(`${this.BASE_URL}search/movie?api_key=${this.KEY}&language=en-US&include_adult=false&query=${this.FETCH_QUERY}&page=${this.page}`);
-//     const oneSearchMovie = await fetchResult.json();
-//     return oneSearchMovie;
-// }
+// 
 // getPage(){
 //     return this.page;
 //     }
