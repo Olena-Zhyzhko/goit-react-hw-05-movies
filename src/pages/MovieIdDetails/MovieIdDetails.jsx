@@ -11,12 +11,7 @@ import AdditionalInfo from 'components/AdditionalInfo'
 export default function MovieIdDetails() {
     const { movieId } = useParams();
     const location = useLocation();
-    // console.log(filmId);
-    const [movie, setMovie] = useState(
-        // () => {
-        //     return JSON.parse(window.localStorage.getItem('singleMovie')) ??
-                null
-    );
+    const [movie, setMovie] = useState(null);
 
     async function fetchMoviesResult(id) {
 
@@ -43,15 +38,6 @@ export default function MovieIdDetails() {
         fetchMoviesResult(movieId);
     }, [movieId])
 
-    // useEffect(() => {
-    //     localStorage.setItem('popularMovie', JSON.stringify(movie));
-    // }, [movie])
-
-
-
-    //     useEffect(() => {
-    //     localStorage.setItem('popularMovie', JSON.stringify(movies));
-    // }, [movies])
 
     if (!movie) {
         return null;
@@ -67,16 +53,3 @@ export default function MovieIdDetails() {
       </div>
   )
 }
-
-// const ProductDetails = () => {
-//   const location = useLocation();
-//   console.log(location.state);
-
-//   // /products -> products/h-1
-//   // { from: { pathname: "/products", search: "" } }
-
-//   // /products?name=hoodie -> products/h-1
-//   // { from: { pathname: "/products", search: "?name=hoodie" } }
-
-//   return <Link to={location.state.from}>Back to products</Link>;
-// };
