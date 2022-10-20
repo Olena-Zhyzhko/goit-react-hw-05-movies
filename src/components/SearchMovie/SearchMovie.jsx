@@ -1,7 +1,7 @@
 import React from 'react'
 import { fetchMovieName } from 'components/fetchMovies';
 import { useState, useEffect } from 'react';
-import SearchMovieItems from 'components/SearchMovieItems';
+import SearchMovieItems from 'components/SearchMovie/SearchMovieItems';
 
 
 export default function SearchMovie({ searchMovie }) {

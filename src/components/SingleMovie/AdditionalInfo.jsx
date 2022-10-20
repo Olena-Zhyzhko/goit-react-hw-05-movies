@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Link, Outlet, useLocation } from "react-router-dom";
 // import { useParams } from 'react-router-dom';
 
@@ -22,8 +22,10 @@ export default function AdditionalInfo({ id }) {
                   <Link to={'reviews'} id={id} state={{ from: location.state?.from }}
 >Reviews</Link >
               </li>
-          </ul>
+      </ul>
+      <Suspense fallback={null}>
         <Outlet />
+      </Suspense>
 
       </div>
   )

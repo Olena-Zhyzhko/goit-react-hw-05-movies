@@ -1,0 +1,17 @@
+.Header {
+  position: relative;
+  width: 100%;
+  background-color: blue;
+  padding: 15px 10px;
+
+}
+
+.NavLink {
+  margin-right: 10px;
+  text-decoration: none;
+  color: rgb(111, 204, 247);
+}
+
+.NavLink.active {
+  color: aliceblue;
+  }

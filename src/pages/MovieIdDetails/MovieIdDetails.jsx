@@ -2,8 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { fetchOneMovie } from 'components/fetchMovies';
 import { useParams, useLocation, Link } from 'react-router-dom';
-import SingleMovie from 'components/SingleMovie'
-import AdditionalInfo from 'components/AdditionalInfo'
+import SingleMovie from 'components/SingleMovie/SingleMovie'
+import AdditionalInfo from 'components/SingleMovie/AdditionalInfo'
 
 
 
@@ -47,7 +47,7 @@ export default function MovieIdDetails() {
 
   return (
       <div>
-          <Link to={location.state?.from}>Go back</Link>;
+          <Link to={location.state?.from}>Go back</Link>
           <SingleMovie movie={movie} />
           <AdditionalInfo id={movieId} />
       </div>

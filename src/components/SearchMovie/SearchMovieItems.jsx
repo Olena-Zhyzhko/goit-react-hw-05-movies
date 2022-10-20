@@ -9,7 +9,7 @@ export default function SearchMovieItems({ films }) {
     <>
             {films.map(({ id, title }) => (
                 <li key={id} className="ImageGalleryItem">
-                    <Link to={`/movies/${id}`} state={{ from: location }}>{title}</Link >
+                    <Link to={`${id}`} state={{ from: location }}>{title}</Link >
                 </li>
             ))}
         </>

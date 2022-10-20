@@ -1,16 +1,9 @@
 import axios from 'axios';
 
-// export default function theMovieDbApi() {
-    
   const page = 1;
   const BASE_URL='https://api.themoviedb.org/3/';
   const MAIN_PAGE_URL = 'trending/movie/day';
   const KEY = '31ede725e11c94cc06cfdf663642b455';
-//   const INFO_URL = 'movie/';
-//   const SEARCH_URL = 'search/movie';
-//   const GENRE_URL = '/genre/movie/list';
-//     const FETCH_QUERY = '';
-
 
     const fetchMovies = async () => {
     const responce = await axios.get(`${BASE_URL}${MAIN_PAGE_URL}?api_key=${KEY}&page=${page}`);
@@ -36,7 +29,6 @@ const fetchMovieReviews = async (id) => {
     const oneMovieCredits = await axios.get(`${BASE_URL}movie/${id}/reviews?api_key=${KEY}&language=en-US`);
     return oneMovieCredits;
 }
-    // https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
 
 export { fetchMovies, fetchMovieName, fetchOneMovie, fetchMovieCredits, fetchMovieReviews };
 // async fetchMovies(){
