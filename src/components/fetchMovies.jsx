@@ -31,32 +31,3 @@ const fetchMovieReviews = async (id) => {
 }
 
 export { fetchMovies, fetchMovieName, fetchOneMovie, fetchMovieCredits, fetchMovieReviews };
-// async fetchMovies(){
-      
-//     const fetchRequest = await fetch(`${this.BASE_URL}${this.MAIN_PAGE_URL}?api_key=${this.KEY}&page=${this.page}`);
-//     const data = await fetchRequest.json();
-
-//     return data;
-//     }
-
-// async fetchGenres(){
-//     const genresRequest = await fetch(`${this.BASE_URL}${this.GENRE_URL}?api_key=${this.KEY}`);
-//     const list = await genresRequest.json();
-//     return list.genres;
-// }
-
-// 
-
-// 
-// getPage(){
-//     return this.page;
-//     }
-    
-// setQuery(query) {
-//     this.FETCH_QUERY = query
-// }
-
-// setPage(newPage){
-//     this.page = newPage;
-// }
-// };

@@ -25,7 +25,6 @@ export default function SearchForm({ onSubmit}) {
         <div>
             <form className="SearchForm" onSubmit={handleSubmit}>
                 <button type="submit" className="SearchForm-button">
-                    {/* <FcSearch className='btnIcon' /> */}
                     <span className="SearchForm-button-label">Search</span>
                 </button>
 

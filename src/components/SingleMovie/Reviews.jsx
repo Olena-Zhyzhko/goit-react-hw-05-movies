@@ -17,7 +17,6 @@ export default function Reviews() {
             try {
                 const responseData = await fetchMovieReviews(id);
                 setReviews(responseData.data.results);
-                console.log(responseData);
             }
             catch (error) {
                 setError(error);
@@ -41,13 +40,14 @@ export default function Reviews() {
         <ul>
             {error && <p>{error.massage}</p>}
             {loading && <Loader>Загружаем</Loader>}
-            {reviews.length > 0 &&
-                reviews.map(({ id, author, content }) => (
+            {reviews.length > 0 ?
+                (reviews.map(({ id, author, content }) => (
                     <li key={id} className="ImageGalleryItem">
                         <p>Author: {author ?? ''}</p>
                         <p>{content ?? ''}</p>
                     </li>
-                ))
+                ))) :
+                <p>:((( We don't have any reviewes for this movie.</p>
             }
         </ul>
   )

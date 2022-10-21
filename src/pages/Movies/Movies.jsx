@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react'
-// import { toast } from 'react-toastify';
 import SearchForm from 'components/SearchMovie/SearchForm';
 import SearchMovie from 'components/SearchMovie/SearchMovie';
 

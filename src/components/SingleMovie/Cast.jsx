@@ -5,8 +5,6 @@ import { useParams } from 'react-router-dom';
 import Loader from 'components/Loader/Loader';
 import noImg from 'images/noImages.jpg'
 
-
-
 export default function Cast() {
     const [casts, setCasts] = useState([])
     const { movieId } = useParams();
@@ -18,7 +16,6 @@ export default function Cast() {
             try {
                 const responseData = await fetchMovieCredits(id);
                 setCasts(responseData.data.cast);
-                console.log(responseData);
             }
             catch (error) {
                 setError(error);

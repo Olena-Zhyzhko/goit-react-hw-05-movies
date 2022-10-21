@@ -16,11 +16,10 @@ export default function AdditionalInfo({ id }) {
               <li>
                   <Link to={'reviews'} id={id} state={{ from: location.state?.from }}>Reviews</Link >
               </li>
-      </ul>
-      <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
-
+            </ul>
+            <Suspense fallback={null}>
+              <Outlet />
+            </Suspense>
       </div>
   )
 }

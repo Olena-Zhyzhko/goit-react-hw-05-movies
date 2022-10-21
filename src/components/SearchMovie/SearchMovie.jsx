@@ -23,9 +23,7 @@ export default function SearchMovie({ searchMovie }) {
             try {
                 const responseData = await fetchMovieName(searchName);
                 handleResult(responseData);
-
                 setMovies(responseData.data.results);
-                    console.log(responseData);
             }
             catch (error) {
                 setError(error);
@@ -49,6 +47,7 @@ export default function SearchMovie({ searchMovie }) {
     const changeQuery = (movieName) => {
         setSearchParams(movieName !== '' ? {query: movieName} : {})
     }
+    
     useEffect(() => {
         if (searchMovie === '') {
             return

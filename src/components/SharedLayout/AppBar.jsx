@@ -2,8 +2,6 @@ import React, { Suspense } from 'react'
 import { Outlet, NavLink } from "react-router-dom";
 import './AppBar.css'
 
-
-
 export default function AppBar() {
   return (
     <>
@@ -16,7 +14,6 @@ export default function AppBar() {
       <Suspense fallback={null}>
           <Outlet />
       </Suspense>
-        {/* <Outlet /> */}
     </>
   )
 }
