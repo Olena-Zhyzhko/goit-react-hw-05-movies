@@ -6,6 +6,7 @@ import { useSearchParams, useLocation } from "react-router-dom";
 import PropTypes from 'prop-types';
 import Loader from 'components/Loader/Loader'
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -47,7 +48,7 @@ export default function SearchMovie({ searchMovie }) {
     const changeQuery = (movieName) => {
         setSearchParams(movieName !== '' ? {query: movieName} : {})
     }
-    
+
     useEffect(() => {
         if (searchMovie === '') {
             return

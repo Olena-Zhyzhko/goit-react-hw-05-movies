@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
+import 'react-toastify/dist/ReactToastify.css';
 
  
 export default function SearchForm({ onSubmit}) {
