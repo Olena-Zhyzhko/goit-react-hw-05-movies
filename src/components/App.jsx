@@ -2,6 +2,8 @@ import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "pages/HomePage/HomePage";
 import { SharedLayout } from 'components/SharedLayout/SharedLayout'
+import { ToastContainer } from 'react-toastify';
+
 
 const Movies = lazy(() => import('../pages/Movies/Movies'));
 const MovieIdDetails = lazy(() => import('../pages/MovieIdDetails/MovieIdDetails'));
@@ -23,6 +25,7 @@ export const App = () => {
             </Route>
         </Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 };
