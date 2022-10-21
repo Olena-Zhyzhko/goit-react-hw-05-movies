@@ -4,33 +4,27 @@ import { fetchOneMovie } from 'components/fetchMovies';
 import { useParams, useLocation, Link } from 'react-router-dom';
 import SingleMovie from 'components/SingleMovie/SingleMovie'
 import AdditionalInfo from 'components/SingleMovie/AdditionalInfo'
-
-
-
+import Loader from 'components/Loader/Loader'
 
 export default function MovieIdDetails() {
     const { movieId } = useParams();
     const location = useLocation();
     const [movie, setMovie] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
 
     async function fetchMoviesResult(id) {
-
-        // setLoading(true);
+        setLoading(true);
         try {
-                console.log(id);
-                
-                const responseData = await fetchOneMovie(id);
-                // handleResult(responseData);
-                // console.log(responseData);
+            const responseData = await fetchOneMovie(id);
             setMovie(responseData.data);
-            // localStorage.setItem('singleMovie', JSON.stringify(movie));
-
             }
             catch (error) {
-                // setError(error);
+                setError(error);
             }
             finally {
-            //    setLoading(false)
+               setLoading(false)
             }
         };
     
@@ -39,17 +33,17 @@ export default function MovieIdDetails() {
     }, [movieId])
 
 
-    if (!movie) {
-        return null;
-    }
-
-    
-
-  return (
-      <div>
-          <Link to={location.state?.from}>Go back</Link>
-          <SingleMovie movie={movie} />
-          <AdditionalInfo id={movieId} />
-      </div>
+    return (
+      <>
+            {error && <p>error massage{error.massage}</p>}
+            {loading && <Loader>Загружаем</Loader>}
+            {movie &&
+                <div>
+                    <Link to={location.state?.from}>Go back</Link>
+                    <SingleMovie movie={movie} />
+                    <AdditionalInfo id={movieId} />
+                </div>
+            }
+      </>
   )
 }

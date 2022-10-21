@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link, useLocation  } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 
 export default function HomePagesItems({ films }) {
@@ -15,12 +16,9 @@ export default function HomePagesItems({ films }) {
         </>  )
 }
 
-// const Products = () => {
-//   const location = useLocation();
-
-//   return (
-//     <Link to="/product/h-1" state={{ from: location }}>
-//       Navigate to product h-1
-//     </Link>
-//   );
-// };
+HomePagesItems.propTypes = {
+    films: PropTypes.arrayOf(PropTypes.shape({ 
+        id: PropTypes.number.isRequired, 
+        title: PropTypes.string.isRequired, 
+        } )),
+}

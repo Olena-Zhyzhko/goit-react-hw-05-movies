@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
+
  
 export default function SearchForm({ onSubmit}) {
     const [searchMovie, setSearchMovie] = useState('');
@@ -40,4 +42,8 @@ export default function SearchForm({ onSubmit}) {
             </form>
         </div>
     )
+}
+
+SearchForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
 }

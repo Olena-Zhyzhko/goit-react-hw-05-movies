@@ -2,34 +2,33 @@ import React from 'react';
 import { fetchMovieReviews } from 'components/fetchMovies'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Loader from 'components/Loader/Loader'
+
 
 export default function Reviews() {
     const [reviews, setReviews] = useState([])
     const { movieId } = useParams();
-    // console.log(movieId);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
 
     async function fetchMoviesReviews(id) {
+        setLoading(true);
             try {
                 const responseData = await fetchMovieReviews(id);
                 setReviews(responseData.data.results);
                 console.log(responseData);
             }
             catch (error) {
-                // setError(error);
+                setError(error);
             }
             finally {
-            //    setLoading(false)
+               setLoading(false)
             }
         };
     
     useEffect(() => {
-        // if (cast === []) {
-        //     return;
-        // }
-        
         fetchMoviesReviews(movieId);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -37,24 +36,21 @@ export default function Reviews() {
         return null;
     }
     console.log(reviews);
-// const imageURL = "https://image.tmdb.org/t/p/w500";
-
 
     return (
         <ul>
-            {reviews.map(({ id, author, content }) => (
-                <li key={id} className="ImageGalleryItem">
-                    <p>Author: {author ?? ''}</p>
-                    <p>{content ?? ''}</p>
-                </li>
-            ))}
+            {error && <p>{error.massage}</p>}
+            {loading && <Loader>Загружаем</Loader>}
+            {reviews.length > 0 &&
+                reviews.map(({ id, author, content }) => (
+                    <li key={id} className="ImageGalleryItem">
+                        <p>Author: {author ?? ''}</p>
+                        <p>{content ?? ''}</p>
+                    </li>
+                ))
+            }
         </ul>
-    //   <div>
-    //       <p>hello</p>
-    //   </div>
   )
 }
 
 
-// https://api.themoviedb.org/3/movie/undefined/credits?api_key=31ede725e11c94cc06cfdf663642b455&language=en-US
-// https://api.themoviedb.org/3/movie/616820/credits?api_key=31ede725e11c94cc06cfdf663642b455&language=en-US

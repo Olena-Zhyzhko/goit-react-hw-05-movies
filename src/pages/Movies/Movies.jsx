@@ -8,13 +8,13 @@ import SearchMovie from 'components/SearchMovie/SearchMovie';
 export default function Movies() {
  const [searchMovie, setSearchMovie] = useState('');
 
-  const hangleFormSubmit = (searchMovie) => {
+  const handleFormSubmit = (searchMovie) => {
     setSearchMovie(searchMovie);
   }
 
   return (
       <div>
-          <SearchForm onSubmit={hangleFormSubmit} />
+          <SearchForm onSubmit={handleFormSubmit} />
           <SearchMovie searchMovie={searchMovie} />
       </div>
   )

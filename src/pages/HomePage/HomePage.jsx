@@ -2,27 +2,26 @@ import React from 'react';
 import { fetchMovies } from 'components/fetchMovies';
 import { useState, useEffect } from 'react';
 import HomePagesItems from 'components/HomePagesItems';
+import Loader from 'components/Loader/Loader'
+
 
 export default function HomePage() {
-    const [movies, setMovies] = useState(() => {
-        return JSON.parse(window.localStorage.getItem('popularMovie')) ?? []
-    })
+    const [movies, setMovies] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
 
     async function fetchMoviesResult() {
-        // setLoading(true);
+        setLoading(true);
             try {
                 const responseData = await fetchMovies();
-                // handleResult(responseData);
-                // console.log(responseData);
                 setMovies(responseData.results);
-                        // localStorage.setItem('popularMovie', JSON.stringify(movies));
-
             }
             catch (error) {
-                // setError(error);
+                setError(error);
             }
             finally {
-            //    setLoading(false)
+               setLoading(false)
             }
         };
     
@@ -30,20 +29,17 @@ export default function HomePage() {
         if (movies === []) {
             return;
         }
-
         fetchMoviesResult();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-        useEffect(() => {
-        localStorage.setItem('popularMovie', JSON.stringify(movies));
-    }, [movies])
-
-
   return (
-          <ul>
+    <ul>
+        {error && <p>{error.massage}</p>}
+        {loading && <Loader>Загружаем</Loader>}
+        {movies.length > 0 &&
               <HomePagesItems films={movies} />
-          </ul>
+        }
+    </ul>
   )
 }
